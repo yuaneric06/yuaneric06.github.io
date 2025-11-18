@@ -1,42 +1,38 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import "tailwindcss";
+
+body { 
+  font-family: "Press Start 2P", system-ui;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.full-screen-gradient {
+  position: relative;
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom right, #c084fc, #f9a8d4, #60a5fa); /* purple-400 → pink-300 → blue-400 */
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* overlay pattern */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  opacity: 0.10;
+  pointer-events: none;
+  z-index: -1;
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      #000 2px,
+      #000 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      #000 2px,
+      #000 4px
+    );
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  background-size: 20px 20px;
 }
