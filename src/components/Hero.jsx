@@ -14,9 +14,11 @@ export default function Hero() {
     return (
         <section className="hero">
             <section className="left">
-                <PixelStar className="text-yellow-400 animate-pulse" />
-                <PixelStar className="text-pink-400 animate-pulse" style={{ animationDelay: '0.2s' }} />
-                <PixelStar className="text-blue-400 animate-pulse" style={{ animationDelay: '0.4s' }} />
+                <div className="pixel-star-container">
+                    <PixelStar className="text-yellow-400 animate-pulse" />
+                    <PixelStar className="text-pink-400 animate-pulse" style={{ animationDelay: '0.2s' }} />
+                    <PixelStar className="text-blue-400 animate-pulse" style={{ animationDelay: '0.4s' }} />
+                </div>
 
                 <h1>HEY, I'M <br />ERIC YUAN 👾</h1>
 
