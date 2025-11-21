@@ -1,3 +1,13 @@
+section.project-element-section {
+    transform: translate(0, 0);
+    transition: transform, 0.1s;
+}
+
+section.project-element-section:hover {
+    transform: translate(5px, 5px);
+    transition: transform 0.1s;
+}
+
 section.project-element-section > h1 {
     margin-top: 1rem;
 }

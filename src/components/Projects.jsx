@@ -11,7 +11,7 @@ export default function Projects() {
     });
 
     return (
-        <section className="projects">
+        <section id="projects" className="projects">
             <div className="top-thingie">
                 <Gamepad2 className="w-8 h-8 text-white" />
                 <div className="pixel-star-wrapper">

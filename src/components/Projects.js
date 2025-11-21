@@ -19,6 +19,13 @@ const ProjectList = [
         description: "DO WHATEVER YOUR HEART DESIRES IN THIS CREATIVE SIMULATOR. BLOW UP SOME STUFF!",
         icon: "✨",
         iconBackgroundColor: "#f1a2ff"
+    },
+    {
+        title: "FunkeyType",
+        tools: ["REACT", "HTML", "CSS"],
+        description: "A HIGH PERFORMANCE TYPING BENCHMARK, SUPPOSEDLY. TYPE TYPE TYPE!",
+        icon: "⌨️​",
+        iconBackgroundColor: "#fb64b6"
     }
 ]
 
