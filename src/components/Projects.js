@@ -21,7 +21,7 @@ const ProjectList = [
         iconBackgroundColor: "#f1a2ff"
     },
     {
-        title: "FunkeyType",
+        title: "FUNKEYTYPE",
         tools: ["REACT", "HTML", "CSS"],
         description: "A HIGH PERFORMANCE TYPING BENCHMARK, SUPPOSEDLY. TYPE TYPE TYPE!",
         icon: "⌨️​",
