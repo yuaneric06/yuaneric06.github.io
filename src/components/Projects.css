@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 10rem;
+    scroll-margin-top: 5rem;
 }
 
 .projects > h1 {

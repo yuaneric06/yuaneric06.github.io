@@ -1,27 +1,15 @@
 import { Github, Linkedin, Mail, Sparkles } from 'lucide-react';
-import { useWindowSize } from 'react-use'
-import { useState } from 'react'
-import Confetti from 'react-confetti'
 import PixelStar from './PixelStar.jsx'
 import ImageWithFallback from './ImageWithFallback.jsx'
 import './Hero.css'
 
 export default function Hero() {
-    const { width, height } = useWindowSize();
-    const [showConfetti, setShowConfetti] = useState(false);
     const scrollToSection = (id) => {
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: "smooth" });
         }
     };
-
-    const handleClick = () => {
-        setShowConfetti(true);
-        setTimeout(() => {
-            setShowConfetti(false);
-        }, 5000);
-    }
 
     const fluffyImgStyle = {
         width: '600px',
@@ -33,13 +21,6 @@ export default function Hero() {
     return (
         <section className="hero">
             <section className="left">
-                {showConfetti && 
-                    <div className="confetti">
-                        <Confetti
-                            tweenDuration={5000}
-                        />
-                    </div>
-                }
                 <div className="pixel-star-container">
                     <PixelStar className="text-yellow-400 animate-pulse" />
                     <PixelStar className="text-pink-400 animate-pulse" style={{ animationDelay: '0.2s' }} />
@@ -55,15 +36,14 @@ export default function Hero() {
                     FROM BUILDING GAMES TO WEB APPS, I BUILD THINGS THAT BRING IDEAS TO LIFE!
                 </p>
 
-                <nav>
-                    <button onClick={() => handleClick()}>
+                <nav className="fun-buttons">
+                    <button className="view-work-button" onClick={() => scrollToSection("projects")}>
                         <Sparkles className="w-4 h-4 mr-2" />
                         VIEW WORK
                     </button>
-                    <button onClick={handleClick}>
+                    {/* <button className="fun-button">
                         PRESS ME
-                    </button>
-
+                    </button> */}
                 </nav>
 
                 <div className="anchors">

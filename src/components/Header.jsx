@@ -11,7 +11,7 @@ export default function Header() {
     };
 
     return (
-        <header>
+        <header className="header">
             <div className="filler">
                 <nav>
                     <div className="logo">
