@@ -97,3 +97,12 @@ h1, p, div, section, button, nav {
 .animate-bounce-in {
   animation: bounce-in 0.5s ease-out;
 }
+
+.wip {
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+}

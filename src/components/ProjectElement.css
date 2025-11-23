@@ -47,3 +47,42 @@ section.project-element-section > h1 {
     display: flex;
     gap: 5px;
 }
+
+.links {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 30px 0;
+    gap: 10px;
+}
+
+.links > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    box-shadow: 4px 4px;
+    width: 45%;
+    border: solid 5px;
+    transition: 0.2s;
+    padding: 3px 10px;
+}
+
+.demo-button {
+    background-color: #4ade80;
+}
+
+.demo-button:hover {
+    translate: 3px 3px;
+    box-shadow: 2px 2px;
+    background-color: #22c55e;
+}
+
+.code-button {
+    background-color: #facc15;
+}
+
+.code-button:hover {
+    translate: 3px 3px;
+    box-shadow: 2px 2px;
+    background-color: #eab308;
+}
