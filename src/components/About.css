@@ -7,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-top: 10rem;
 }
 
 .about > h1 {

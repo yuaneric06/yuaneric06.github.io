@@ -11,7 +11,8 @@ h1, p, div, section, button, nav {
 .full-screen-gradient {
   position: relative;
   min-height: 100vh;
-  background-image: linear-gradient(to bottom right, #c084fc, #f9a8d4, #60a5fa); /* purple-400 → pink-300 → blue-400 */
+  background-image: linear-gradient(to bottom right, #c084fc, #f9a8d4, #60a5fa); /*purple-400 → pink-300 → blue-400
+  /* background-image: linear-gradient(to bottom right, #d98b3a, #e58a4f, #d0742c); purple-400 → pink-300 → blue-400 */
 }
 
 /* overlay pattern */

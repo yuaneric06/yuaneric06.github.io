@@ -34,6 +34,15 @@ const ProjectList = [
         iconBackgroundColor: "#fb64b6",
         demoLink: "",
         codeLink: ""
+    },
+    {
+        title: "NineLivesOnline",
+        tools: ["REACT", "HTML", "CSS"],
+        description: "PERSONAL WEBSITE FOR MY CAT, KITTY! \"MEOW MEOW, MEOW!\" - KITTY",
+        icon: "🐾",
+        iconBackgroundColor: "#ad7092ff",
+        demoLink: "",
+        codeLink: ""
     }
 ]
 

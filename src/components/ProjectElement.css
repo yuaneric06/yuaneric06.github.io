@@ -27,7 +27,7 @@ section.project-element-section > h1 {
     box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 1);
 }
 
-.project-element-section > .pixel-corners > h1, p {
+.project-element-section > .pixel-corners > h1, .project-element-section > .pixel-corners > p {
     margin: 2rem 2rem;
 }
 

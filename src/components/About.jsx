@@ -1,8 +1,29 @@
 import './About.css'
+import { Code2, Palette, Zap, Heart, Rocket, Users } from "lucide-react";
 
 export default function About() {
+    const skills = [
+        {
+            skill: "PASSIONATE",
+            description: "GENUINELY LOVE WHAT I DO AND PUT CARE INTO IT!",
+            backgroundColor: "#7bf1a8",
+            icon: Heart
+        },
+        {
+            skill: "FAST LEARNER",
+            description: "ALWAYS EXPLORING NEW TECH AND BEST PRACTICES!",
+            backgroundColor: "#ffb86a",
+            icon: Zap
+        },
+        {
+            skill: "FAST LEARNER",
+            description: "ALWAYS EXPLORING NEW TECH AND BEST PRACTICES!",
+            backgroundColor: "#ffb86a",
+            icon: Zap
+        },
+    ]
     return (
-        <section className="about">
+        <section id="about" className="about">
             <h1>ABOUT ME</h1>
             <div className="pixel-corners">
                 <p>GET TO KNOW ME - MY STORY AND WHAT DRIVES ME! 🎯</p>
@@ -27,6 +48,14 @@ export default function About() {
                     </p>
                 </div>
             </div>
+
+            {/* <div className="skill">
+                <div className="skill-header">
+                    <span className="text-2xl">⭐</span>
+                    WHAT I BRING
+                    <span className="text-2xl">⭐</span>
+                </div>
+            </div> */}
         </section>
     )
 }
