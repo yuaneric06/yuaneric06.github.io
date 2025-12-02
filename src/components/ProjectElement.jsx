@@ -2,7 +2,7 @@ import { ExternalLink, Github } from "lucide-react";
 import './ProjectElement.css'
 
 export default function ProjectElement(props) {
-    const { title, tools, description, icon, iconBackgroundColor, demoLink, codeLink, ...rest } = props.data;
+    const { title, tools, description, icon, iconBackgroundColor, demoLink, codeLink, finishDate, ...rest } = props.data;
     console.log(iconBackgroundColor);
     const iconStyles = {
         backgroundColor: iconBackgroundColor
@@ -18,7 +18,13 @@ export default function ProjectElement(props) {
                 <div style={iconStyles} className="project-element-icon">
                     {icon}
                 </div>
-                <h1>{title}</h1>
+                <div className="flex justify-between mb-3">
+                    <h1 className="relative top-5 left-8 text-4xl sm:text-base flex-1">{title}</h1>
+                    <span className="bg-black text-white px-2 py-1 text-[10px] border-2 border-black ml-2">
+                        FINISHED: {finishDate}
+                    </span>
+                </div>
+
                 <p>{description}</p>
                 <div className="tools">
                     {toolElements}
