@@ -10,7 +10,7 @@ export default defineConfig(() => {
     };
 
     return {
-        root: `${currentDir}/src`,
+        // root: `${currentDir}/src`,
         plugins: [React()],
         server: serveOptions,
         preview: serveOptions,
