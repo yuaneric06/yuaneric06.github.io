@@ -11,10 +11,12 @@ const AppContext = React.createContext({
     theme: {
         background: '#22292B',
         normalText: '#E5C07B',
+        files: '#E5C07B',
+        directories: '#61AFEF',
         border: '#98C379',
-        name: '#67B0E8',
-        user: '#CE89DF',
-        promptSymbols: '#A89984',
+        name: '#C678DD',
+        user: '#61AFEF',
+        promptSymbols: '#ABB2BF',
         error: '#F44747',
         commandExists: '#67CBE7',
         link: '#6CB5ED',
@@ -57,12 +59,21 @@ const ReactUnixTerminal = ({
             pwd: () => '/' + cwd.join('/'),
             ls: (args) => {
                 const target = nodeAt(fs, resolvePath(cwd, args[0] ?? ''));
-                console.log("currently at ", target);
                 if (!target) return `ls: no such directory: ${args[0]}`;
                 if (target.type !== 'directory')
                     return `ls: not a directory: ${args[0]}`;
-                console.log("target children: ", target.children);
-                return Object.keys(target.children).join('  ') || '(empty)';
+
+                const entries = Object.entries(target.children)
+                    .sort(([a], [b]) => a.localeCompare(b))
+                    .map(([name, node]) => {
+                        const className = 
+                            node.type === 'directory' 
+                            ? 'react-unix-terminal-directories' 
+                            : 'react-unix-terminal-files';
+                        return `<span class="${className}">${name}</span>`;
+                    });
+
+                return entries.join('  ') || '(empty)';
             },
             cd: (args) => {
                 const newPath = resolvePath(cwd, args[0] ?? '~');
@@ -90,6 +101,8 @@ const ReactUnixTerminal = ({
             const {
                 background,
                 normalText,
+                files,
+                directories,
                 border,
                 name,
                 user,
@@ -108,6 +121,9 @@ const ReactUnixTerminal = ({
                 '--react-unix-terminal-normal-text',
                 normalText,
             );
+            current.style.setProperty('--react-unix-terminal-files', files);
+            current.style.setProperty(
+                '--react-unix-terminal-directories', directories);
             current.style.setProperty('--react-unix-terminal-border', border);
             current.style.setProperty('--react-unix-terminal-name', name);
             current.style.setProperty('--react-unix-terminal-user', user);

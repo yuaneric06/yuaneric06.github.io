@@ -38,7 +38,16 @@ const History = ({
                         </div>
                     )}
                     <p className="react-unix-terminal-output">
-                        {parse(sanitizeHtml(entry.output))}
+                        {parse(
+                            sanitizeHtml(entry.output, {
+                                allowedTags: sanitizeHtml.defaults.allowedTags.concat(['span']),
+                                allowedAttributes: {
+                                    ...sanitizeHtml.defaults.allowedAttributes,
+                                    span: ['class'],
+                                    a: ['href', 'target'],
+                                },
+                            }),
+                        )}
                     </p>
                 </div>
             ))}

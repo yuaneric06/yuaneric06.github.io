@@ -55,6 +55,7 @@ const Input = ({
                     id="prompt"
                     type="text"
                     value={command}
+                    // size={command.length || 1}
                     onChange={({ target: { value } }) => setCommand(value)}
                     autoFocus
                     autoComplete="off"
@@ -63,6 +64,7 @@ const Input = ({
                     spellCheck="false"
                     className="react-unix-terminal-shell-input"
                     style={{
+                        width: `${command.length}ch`,
                         color:
                             command === '' ||
                             isCommandExists({

@@ -1,6 +1,8 @@
 type Theme = Readonly<{
     background: string;
     normalText: string;
+    files: string;
+    directories: string;
     border: string;
     name: string;
     user: string;

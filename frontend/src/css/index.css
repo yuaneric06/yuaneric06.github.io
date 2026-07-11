@@ -27,6 +27,7 @@ div#root {
 /* Input */
 .react-unix-terminal-shell-input-container {
     display: flex;
+    align-items: center;
     overflow: auto;
     height: 100%;
 }
@@ -39,7 +40,6 @@ div#root {
     font-size: inherit;
     padding: 0;
     width: auto;
-    min-width: 1ch;
     flex: 0 0 auto;
 }
 
@@ -91,6 +91,14 @@ div#root {
 
 .react-unix-terminal-name {
     color: var(--react-unix-terminal-name);
+}
+
+.react-unix-terminal-files {
+    color: var(--react-unix-terminal-files);
+}
+
+.react-unix-terminal-directories {
+    color: var(--react-unix-terminal-directories);
 }
 
 /* Terminal */
