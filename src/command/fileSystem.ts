@@ -10,7 +10,8 @@ export const resolvePath = (
   cwd: ReadonlyArray<string>,
   input: string,
 ): ReadonlyArray<string> => {
-  if (!input || input === '~') return [];
+  if (input === '~') return [];
+  if (!input) return cwd;
   const segments = input.startsWith('/')
     ? input.slice(1).split('/')
     : [...cwd, ...input.split('/')];

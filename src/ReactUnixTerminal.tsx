@@ -62,6 +62,9 @@ const ReactUnixTerminal = ({
                 if (!target) return `ls: no such directory: ${args[0]}`;
                 if (target.type !== 'directory')
                     return `ls: not a directory: ${args[0]}`;
+                
+                console.log("currently at ", cwd, " and target is ", target);
+                console.log("target children are ", target.children);
 
                 const entries = Object.entries(target.children)
                     .sort(([a], [b]) => a.localeCompare(b))
