@@ -1,0 +1,2 @@
+fix visual bug where pressing arrow keys doesn't move the caret
+fix visual bug where pressing space then a valid command looks invalid

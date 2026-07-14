@@ -41,6 +41,7 @@ div#root {
     padding: 0;
     width: auto;
     flex: 0 0 auto;
+    line-height: 1.2;
 }
 
 /* Prompt */
@@ -72,16 +73,22 @@ div#root {
 
 .react-unix-terminal-input-wrapper {
     position: relative;
-    display: inline-flex;
+    display: inline-block;
     align-items: center;
+    line-height: 1.2;
 }
 
 .react-unix-terminal-fake-caret {
     width: 0.6em;
-    height: 1.1em;
+    height: 1.2em;
     background: var(--react-unix-terminal-normal-text);
+    mix-blend-mode: difference;
     margin-left: 1px;
     animation: caret-blink 1s step-end infinite;
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    pointer-events: none;
 }
 
 @keyframes caret-blink {

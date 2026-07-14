@@ -17,7 +17,7 @@ const isCommandExists = ({
     commands: Commands;
     command: string;
 }>) =>
-    Object.keys(commands).find((comm) => comm === command.split(' ')[0]) !==
+    Object.keys(commands).find((comm) => comm === command.trim().split(' ')[0]) !==
     undefined;
 
 
@@ -37,6 +37,7 @@ const commandCompletion = ({
     cwd?: ReadonlyArray<string>;
 }>) => {
     if (!command) return;
+    command = command.trim();
 
     const parts = command.split(' ');
 
@@ -93,6 +94,7 @@ const shell = async ({
     setCommand: (command: string) => void;
     cwd: ReadonlyArray<string>;
 }>) => {
+    command = command.trim();
     const [arg, ...rest] = command.split(' ');
     if (command === 'clearhist') {
         clearHistory();

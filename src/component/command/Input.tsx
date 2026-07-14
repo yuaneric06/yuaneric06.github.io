@@ -43,6 +43,19 @@ const Input = ({
     cwd: ReadonlyArray<string>;
 }>) => {
     const { theme } = React.useContext(AppContext);
+    const [caretIndex, setCaretIndex] = React.useState(0);
+
+    const syncCaret = () => {
+        const { current } = inputRef;
+        console.log("syncing caret: ", current?.selectionStart);
+        if (current) {
+            setCaretIndex(current.selectionStart ?? 0);
+        }
+    }
+
+    React.useEffect(() => {
+        syncCaret();
+    }, [command]);
 
     return (
         <div className="react-unix-terminal-shell-input-container">
@@ -63,6 +76,8 @@ const Input = ({
                     autoCapitalize="off"
                     spellCheck="false"
                     className="react-unix-terminal-shell-input"
+                    onClick={syncCaret}
+                    onKeyUp={syncCaret}
                     style={{
                         width: `${command.length}ch`,
                         color:
@@ -176,7 +191,10 @@ const Input = ({
                         }
                     }}
                 />
-                <span className="react-unix-terminal-fake-caret" />
+                <span 
+                    className="react-unix-terminal-fake-caret" 
+                    style={{ left: `${caretIndex}ch` }}
+                />
             </span>
         </div>
     );
