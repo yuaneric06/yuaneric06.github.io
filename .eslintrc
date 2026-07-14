@@ -1,6 +1,7 @@
 {
     "extends": [
-        "@poolofdeath20/eslint-config/react",
+        // "@poolofdeath20/eslint-config/react",
+        "@poolofdeath20/eslint-config",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended"
