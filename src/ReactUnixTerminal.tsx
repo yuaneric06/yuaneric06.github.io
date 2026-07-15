@@ -95,7 +95,7 @@ const ReactUnixTerminal = ({
                 return target.content;
             },
         }},
-        [fs, cwd],
+        [fs, cwd, setCwd],
     );
 
     React.useEffect(() => {
@@ -141,7 +141,7 @@ const ReactUnixTerminal = ({
                 fontFamily.split('+').join(' '),
             );
         }
-    }, [chosenTheme.background]);
+    }, [chosenTheme, fontFamily]);
 
     return (
 	<AppContext.Provider

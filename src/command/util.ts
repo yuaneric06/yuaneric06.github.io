@@ -1,5 +1,3 @@
-import parse from 'parse-dont-validate';
-
 import { FSNode, completePath, longestCommonPrefix } from './fileSystem';
 import parseAsCommandHistory from './parser';
 
