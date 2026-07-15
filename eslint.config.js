@@ -15,6 +15,9 @@ const withTypeScript = (config) => ({
 });
 
 export default [
-  withTypeScript(node),
+  {
+    ...withTypeScript(node),
+    files: ['**/*.ts', '**/*.tsx'],
+  },
   withTypeScript(react),
 ];

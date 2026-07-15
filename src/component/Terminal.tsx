@@ -1,10 +1,13 @@
 import * as React from 'react';
+
+import { FSNode } from '../command/fileSystem';
+import { Commands } from '../command/util';
+import useCommandHistory from '../hook/useCommandHistory';
+
 import History from './command/History';
 import Input from './command/Input';
-import useCommandHistory from '../hook/useCommandHistory';
-import { Commands } from '../command/util';
 import Font from './common/FontTag';
-import { FSNode } from '../command/fileSystem';
+
 
 const Terminal = ({
     commands,
@@ -53,31 +56,31 @@ const Terminal = ({
     }, [history]);
 
     return (
-        <div className="react-unix-terminal-terminal">
-            <div
-                ref={containerRef}
-                className="react-unix-terminal-terminal-inner-container"
-            >
-                {importGoogleFont && <Font fontFamily={fontFamily} />}
-                <History name={name} user={user} history={history} />
-                <Input
-                    name={name}
-                    user={user}
-                    commands={commands}
-                    inputRef={inputRef}
-                    containerRef={containerRef}
-                    command={command}
-                    commandsHistory={commandsHistory}
-                    lastCommandIndex={lastCommandIndex}
-                    setCommand={setCommand}
-                    setHistory={setHistory}
-                    setLastCommandIndex={setLastCommandIndex}
-                    clearHistory={clearHistory}
-                    fs={fs}
-                    cwd={cwd}
-                />
-            </div>
-        </div>
+	<div className="react-unix-terminal-terminal">
+		<div
+			className="react-unix-terminal-terminal-inner-container"
+			ref={containerRef}
+		>
+			{importGoogleFont ? <Font fontFamily={fontFamily} /> : null}
+			<History history={history} name={name} user={user} />
+			<Input
+				clearHistory={clearHistory}
+				command={command}
+				commands={commands}
+				commandsHistory={commandsHistory}
+				containerRef={containerRef}
+				cwd={cwd}
+				fs={fs}
+				inputRef={inputRef}
+				lastCommandIndex={lastCommandIndex}
+				name={name}
+				setCommand={setCommand}
+				setHistory={setHistory}
+				setLastCommandIndex={setLastCommandIndex}
+				user={user}
+			/>
+		</div>
+	</div>
     );
 };
 

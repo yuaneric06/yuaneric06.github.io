@@ -1,11 +1,12 @@
 import * as React from 'react';
-import Terminal from './component/Terminal';
-import { Commands } from './command/util';
+
 import createCommands, { Options } from './command/defaultCommands';
-import useFileSystem from './hook/useFileSystem';
 import { FSNode, resolvePath, nodeAt } from './command/fileSystem';
-import Theme from './theme/Theme';
+import { Commands } from './command/util';
+import Terminal from './component/Terminal';
 import { siteConfig } from './config';
+import useFileSystem from './hook/useFileSystem';
+import Theme from './theme/Theme';
 
 const AppContext = React.createContext({
     theme: {
@@ -55,8 +56,8 @@ const ReactUnixTerminal = ({
     const { fs, cwd, setCwd } = useFileSystem(fileSystem);
 
     const fsCommands: Commands = React.useMemo(
-        () => ({
-            pwd: () => '/' + cwd.join('/'),
+        () => {return {
+            pwd: () => {return '/' + cwd.join('/')},
             ls: (args) => {
                 const target = nodeAt(fs, resolvePath(cwd, args[0] ?? ''));
                 if (!target) return `ls: no such directory: ${args[0]}`;
@@ -67,7 +68,7 @@ const ReactUnixTerminal = ({
                 console.log("target children are ", target.children);
 
                 const entries = Object.entries(target.children)
-                    .sort(([a], [b]) => a.localeCompare(b))
+                    .sort(([a], [b]) => {return a.localeCompare(b)})
                     .map(([name, node]) => {
                         const className = 
                             node.type === 'directory' 
@@ -93,7 +94,7 @@ const ReactUnixTerminal = ({
                     return `cat: ${args[0]} is a directory`;
                 return target.content;
             },
-        }),
+        }},
         [fs, cwd],
     );
 
@@ -143,49 +144,49 @@ const ReactUnixTerminal = ({
     }, [chosenTheme.background]);
 
     return (
-        <AppContext.Provider
-            value={{
+	<AppContext.Provider
+		value={{
                 ...appContext,
                 theme: chosenTheme,
             }}
-        >
-            <div
-                ref={cssVariableRef}
-                className="react-unix-terminal-terminal-outermost-container"
-            >
-                <div
-                    className="react-unix-terminal-terminal-flexible-height-width-app-container"
-                    style={{
+	>
+		<div
+			className="react-unix-terminal-terminal-outermost-container"
+			ref={cssVariableRef}
+		>
+			<div
+				className="react-unix-terminal-terminal-flexible-height-width-app-container"
+				style={{
                         height,
                         width,
                     }}
-                >
-                    <div
-                        ref={containerRef}
-                        className="react-unix-terminal-terminal-scrollable-container"
-                        onClick={() => {
+			>
+				<div
+					className="react-unix-terminal-terminal-scrollable-container"
+					onClick={() => {
                             const { current } = inputRef;
                             if (current) {
                                 current.focus();
                             }
                         }}
-                    >
-                        <div className="react-unix-terminal-terminal-container">
-                            <Terminal
-                                user={user}
-                                name={name}
-                                fontFamily={fontFamily}
-                                commands={createCommands({ ...fsCommands, banner: () => siteConfig.banner, ...commands}, options)}
-                                containerRef={containerRef}
-                                inputRef={inputRef}
-                                fs={fs}
-                                cwd={cwd}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </AppContext.Provider>
+					ref={containerRef}
+				>
+					<div className="react-unix-terminal-terminal-container">
+						<Terminal
+							commands={createCommands({ ...fsCommands, banner: () => {return siteConfig.banner}, ...commands}, options)}
+							containerRef={containerRef}
+							cwd={cwd}
+							fontFamily={fontFamily}
+							fs={fs}
+							inputRef={inputRef}
+							name={name}
+							user={user}
+						/>
+					</div>
+				</div>
+			</div>
+		</div>
+	</AppContext.Provider>
     );
 };
 

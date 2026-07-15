@@ -10,7 +10,7 @@
         "noUnusedParameters": true,
         "noImplicitReturns": true,
         "noFallthroughCasesInSwitch": true,
-        "moduleResolution": "node",
+        "moduleResolution": "bundler",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "resolveJsonModule": true,
@@ -21,6 +21,6 @@
         "jsx": "react-jsx",
         "ignoreDeprecations": "6.0"
     },
-    "include": ["src", "test"],
+    "include": ["src"],
     "exclude": ["node_modules", "src/index.tsx"]
 }

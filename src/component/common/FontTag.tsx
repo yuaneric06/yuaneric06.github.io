@@ -4,22 +4,22 @@ const Font = ({
     fontFamily,
 }: Readonly<{
     fontFamily: string;
-}>) => (
-    <>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="anonymous"
-        />
-        <link
-            href={`https://fonts.googleapis.com/css2?family=${fontFamily}:wght@${Array.from(
+}>) => {return (
+	<React.Fragment>
+		<link href="https://fonts.googleapis.com" rel="preconnect" />
+		<link
+			crossOrigin="anonymous"
+			href="https://fonts.gstatic.com"
+			rel="preconnect"
+		/>
+		<link
+			href={`https://fonts.googleapis.com/css2?family=${fontFamily}:wght@${Array.from(
                 { length: 9 },
-                (_, i) => (i + 1) * 100,
+                (_, i) => {return (i + 1) * 100},
             ).join(';')}&display=swap`}
-            rel="stylesheet"
-        />
-    </>
-);
+			rel="stylesheet"
+		/>
+	</React.Fragment>
+)};
 
 export default Font;

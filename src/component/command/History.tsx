@@ -1,9 +1,11 @@
-import * as React from 'react';
-import { History as Hist } from '../../hook/useCommandHistory';
-import Prompt from './Prompt';
-import sanitizeHtml from 'sanitize-html';
 import parse from 'html-react-parser';
+import * as React from 'react';
+import sanitizeHtml from 'sanitize-html';
+
+import { History as Hist } from '../../hook/useCommandHistory';
 import { AppContext } from '../../ReactUnixTerminal';
+
+import Prompt from './Prompt';
 
 const History = ({
     history,
@@ -17,28 +19,28 @@ const History = ({
     const { theme } = React.useContext(AppContext);
 
     return (
-        <>
-            {history.map((entry, index) => (
-                <div key={`${entry.command}${index}`}>
-                    {entry.command !== '' && (
-                        <div className="react-unix-terminal-history-container">
-                            <div>
-                                <Prompt user={user} name={name} cwd={entry.cwd} isRoot={false} />
-                            </div>
-                            <div
-                                className="react-unix-terminal-command-entered"
-                                style={{
+	<React.Fragment>
+		{history.map((entry, index) => {return (
+			<div key={`${entry.command}${index}`}>
+				{entry.command !== '' && (
+				<div className="react-unix-terminal-history-container">
+					<div>
+						<Prompt cwd={entry.cwd} isRoot={false} name={name} user={user} />
+					</div>
+					<div
+						className="react-unix-terminal-command-entered"
+						style={{
                                     color: entry.isExist
                                         ? theme.commandExists
                                         : theme.error,
                                 }}
-                            >
-                                {entry.command}
-                            </div>
-                        </div>
+					>
+						{entry.command}
+					</div>
+				</div>
                     )}
-                    <p className="react-unix-terminal-output">
-                        {parse(
+				<p className="react-unix-terminal-output">
+					{parse(
                             sanitizeHtml(entry.output, {
                                 allowedTags: sanitizeHtml.defaults.allowedTags.concat(['span']),
                                 allowedAttributes: {
@@ -48,10 +50,10 @@ const History = ({
                                 },
                             }),
                         )}
-                    </p>
-                </div>
-            ))}
-        </>
+				</p>
+			</div>
+            )})}
+	</React.Fragment>
     );
 };
 

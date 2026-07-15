@@ -1,6 +1,7 @@
 import parse from 'parse-dont-validate';
-import parseAsCommandHistory from './parser';
+
 import { FSNode, completePath, longestCommonPrefix } from './fileSystem';
+import parseAsCommandHistory from './parser';
 
 type Commands = Readonly<{
     [key: string]: (args: ReadonlyArray<string>) => string;
@@ -8,7 +9,7 @@ type Commands = Readonly<{
 
 const key = 'term-command-hist';
 
-const commandsHistory = () => parseAsCommandHistory(localStorage.getItem(key));
+const commandsHistory = () => {return parseAsCommandHistory(localStorage.getItem(key))};
 
 const isCommandExists = ({
     commands,
@@ -17,8 +18,8 @@ const isCommandExists = ({
     commands: Commands;
     command: string;
 }>) =>
-    Object.keys(commands).find((comm) => comm === command.trim().split(' ')[0]) !==
-    undefined;
+    {return Object.keys(commands).find((comm) => {return comm === command.trim().split(' ')[0]}) !==
+    undefined};
 
 
 const commandCompletion = ({
@@ -43,7 +44,7 @@ const commandCompletion = ({
 
     if (parts.length === 1) {
         const matches = Object.keys(commands).filter((entry) =>
-            entry.startsWith(command),
+            {return entry.startsWith(command)},
         );
         if (matches.length === 1) {
             setCommand(matches[0] ?? command);

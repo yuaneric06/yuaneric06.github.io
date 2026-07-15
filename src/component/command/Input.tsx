@@ -1,5 +1,7 @@
 import parse from 'parse-dont-validate';
 import * as React from 'react';
+
+import { FSNode } from '../../command/fileSystem';
 import {
     Commands,
     commandCompletion,
@@ -8,8 +10,8 @@ import {
 } from '../../command/util';
 import { CommandsHistory } from '../../hook/useCommandHistory';
 import { AppContext } from '../../ReactUnixTerminal';
+
 import Prompt from './Prompt';
-import { FSNode } from '../../command/fileSystem';
 
 const Input = ({
     inputRef,
@@ -58,38 +60,20 @@ const Input = ({
     }, [command]);
 
     return (
-        <div className="react-unix-terminal-shell-input-container">
-            <label htmlFor="prompt">
-                <Prompt user={user} name={name} cwd={cwd} isRoot={false} />
-            </label>
-            <span className="react-unix-terminal-input-wrapper">
-                <input
-                    ref={inputRef}
-                    id="prompt"
-                    type="text"
-                    value={command}
-                    // size={command.length || 1}
-                    onChange={({ target: { value } }) => setCommand(value)}
-                    autoFocus
-                    autoComplete="off"
-                    autoCorrect="off"
-                    autoCapitalize="off"
-                    spellCheck="false"
-                    className="react-unix-terminal-shell-input"
-                    onClick={syncCaret}
-                    onKeyUp={syncCaret}
-                    style={{
-                        width: `${command.length}ch`,
-                        color:
-                            command === '' ||
-                            isCommandExists({
-                                command,
-                                commands,
-                            })
-                                ? theme.commandExists
-                                : theme.error,
-                    }}
-                    onKeyDown={async (event) => {
+	<div className="react-unix-terminal-shell-input-container">
+		<label htmlFor="prompt">
+			<Prompt cwd={cwd} isRoot={false} name={name} user={user} />
+		</label>
+		<span className="react-unix-terminal-input-wrapper">
+			<input
+				autoCapitalize="off"
+				autoComplete="off"
+				autoCorrect="off"
+				autoFocus
+				className="react-unix-terminal-shell-input"
+				id="prompt"
+				onClick={syncCaret}
+				onKeyDown={async (event) => {
                         const { key, ctrlKey, code } = event;
 
                         switch (key) {
@@ -190,13 +174,31 @@ const Input = ({
                             }
                         }
                     }}
-                />
-                <span 
-                    className="react-unix-terminal-fake-caret" 
-                    style={{ left: `${caretIndex}ch` }}
-                />
-            </span>
-        </div>
+				onKeyUp={syncCaret}
+				ref={inputRef}
+				spellCheck="false"
+				style={{
+                        width: `${command.length}ch`,
+                        color:
+                            command === '' ||
+                            isCommandExists({
+                                command,
+                                commands,
+                            })
+                                ? theme.commandExists
+                                : theme.error,
+                    }}
+				type="text"
+				value={command}
+                    // size={command.length || 1}
+				onChange={({ target: { value } }) => {return setCommand(value)}}
+			/>
+			<span 
+				className="react-unix-terminal-fake-caret" 
+				style={{ left: `${caretIndex}ch` }}
+			/>
+		</span>
+	</div>
     );
 };
 

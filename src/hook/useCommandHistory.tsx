@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {
     Commands,
     commandsHistory,
@@ -44,12 +45,12 @@ const useCommandHistory = () => {
                         history
                             .filter(
                                 ({ command }, index, arr) =>
-                                    index === arr.length - 1 && command,
+                                    {return index === arr.length - 1 && command},
                             )
-                            .map(({ command, timeCreated }) => ({
+                            .map(({ command, timeCreated }) => {return {
                                 command,
                                 timeCreated,
-                            })),
+                            }}),
                     ),
                 ),
             );
@@ -57,10 +58,10 @@ const useCommandHistory = () => {
     }, [history.length]);
 
     React.useEffect(() => {
-        setState((prev) => ({
+        setState((prev) => {return {
             ...prev,
             shouldSaveLocally: true,
-        }));
+        }});
     }, []);
 
     return {
@@ -69,7 +70,7 @@ const useCommandHistory = () => {
         lastCommandIndex,
         commandsHistory,
         setHistory: (output: string, commands: Commands, cwd: ReadonlyArray<string>) =>
-            setState((prev) => ({
+            {return setState((prev) => {return {
                 ...prev,
                 history: [
                     ...prev.history,
@@ -85,22 +86,22 @@ const useCommandHistory = () => {
                         cwd,
                     },
                 ],
-            })),
+            }})},
         setCommand: (command: string) =>
-            setState((prev) => ({
+            {return setState((prev) => {return {
                 ...prev,
                 command,
-            })),
+            }})},
         setLastCommandIndex: (lastCommandIndex: number) =>
-            setState((prev) => ({
+            {return setState((prev) => {return {
                 ...prev,
                 lastCommandIndex,
-            })),
+            }})},
         clearHistory: () =>
-            setState((prev) => ({
+            {return setState((prev) => {return {
                 ...prev,
                 history: [],
-            })),
+            }})},
     };
 };
 

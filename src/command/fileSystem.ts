@@ -15,7 +15,7 @@ export const resolvePath = (
   const segments = input.startsWith('/')
     ? input.slice(1).split('/')
     : [...cwd, ...input.split('/')];
-  const resolved: string[] = [];
+  const resolved: Array<string> = [];
   for (const seg of segments) {
     if (seg === '' || seg === '.') continue;
     if (seg === '..') resolved.pop();
@@ -24,7 +24,7 @@ export const resolvePath = (
   return resolved;
 };
 
-export const longestCommonPrefix = (strings: string[]): string => {
+export const longestCommonPrefix = (strings: Array<string>): string => {
   if (strings.length === 0) return '';
   return strings.reduce((prefix, str) => {
     let i = 0;
@@ -37,7 +37,7 @@ export const completePath = (
   fs: FSNode,
   cwd: ReadonlyArray<string>,
   partial: string,
-): string[] => {
+): Array<string> => {
   const lastSlash = partial.lastIndexOf('/');
   const dirInput = lastSlash === -1 ? '' : partial.slice(0, lastSlash);
   const prefix = lastSlash === -1 ? partial : partial.slice(lastSlash + 1);
@@ -46,8 +46,8 @@ export const completePath = (
   if (dirNode?.type !== 'directory') return [];
 
   return Object.keys(dirNode.children)
-    .filter((name) => name.startsWith(prefix))
-    .map((name) => (dirInput ? `${dirInput}/${name}` : name))
+    .filter((name) => {return name.startsWith(prefix)})
+    .map((name) => {return (dirInput ? `${dirInput}/${name}` : name)})
     .sort();
 };
 
@@ -55,8 +55,8 @@ export const nodeAt = (
   fs: FSNode,
   path: ReadonlyArray<string>,
 ): FSNode | undefined =>
-  path.reduce<FSNode | undefined>(
+  {return path.reduce<FSNode | undefined>(
     (node, seg) =>
-      node?.type === 'directory' ? node.children[seg] : undefined,
+      {return node?.type === 'directory' ? node.children[seg] : undefined},
     fs,
-  );
+  )};

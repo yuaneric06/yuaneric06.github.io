@@ -17,23 +17,23 @@ const createCommands = (
         : {
               //default
               history: () =>
-                  commandsHistory()
+                  {return commandsHistory()
                       .map(
                           ({ command, timeCreated }) =>
-                              `executed at: ${timeCreated
+                              {return `executed at: ${timeCreated
                                   .toString()
                                   .split(' ')
-                                  .filter((_, index) => index < 5)
-                                  .join(' ')}, command: ${command}`,
+                                  .filter((_, index) => {return index < 5})
+                                  .join(' ')}, command: ${command}`},
                       )
-                      .join('\n'),
+                      .join('\n')},
               clearhist: () => {
                   localStorage.setItem(key, JSON.stringify([]));
                   return 'history cleared';
               },
-              whoami: () => 'visitor',
-              clear: () => '',
-              date: () => new Date().toString(),
+              whoami: () => {return 'visitor'},
+              clear: () => {return ''},
+              date: () => {return new Date().toString()},
 
 
 
@@ -44,7 +44,7 @@ const createCommands = (
         ? undefined
         : {
               help: () =>
-                  `List of available commands:\n\n${(!appendedCommands
+                  {return `List of available commands:\n\n${(!appendedCommands
                       ? []
                       : Object.keys(appendedCommands)
                   )
@@ -52,7 +52,7 @@ const createCommands = (
                       .sort()
                       .join(
                           '\n',
-                      )}\n\n[tab]\t command completion.\n[ctrl+l] clear terminal.\n[ctrl+c] cancel command.`,
+                      )}\n\n[tab]\t command completion.\n[ctrl+l] clear terminal.\n[ctrl+c] cancel command.`},
           };
     return {
         //custom
