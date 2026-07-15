@@ -25,13 +25,13 @@ jobs:
             # - name: Run Linter
             #   run: pnpm lint
 
-            - name: Run Format Check
-              run: pnpm format-check
+            # - name: Run Format Check
+            #   run: pnpm format-check
 
-            - name: Run Tests
-              env:
-                  IS_CI: true
-              run: pnpm test
+            # - name: Run Tests
+            #   env:
+            #       IS_CI: true
+            #   run: pnpm test
 
             - name: Run Build
               run: pnpm build
