@@ -1,4 +1,5 @@
 import { Commands, commandsHistory, key } from './util';
+import { siteConfig } from '../config';
 
 type NullableCommands = Commands | undefined;
 
@@ -43,16 +44,7 @@ const createCommands = (
     const helper = options?.disableDefaultCommand
         ? undefined
         : {
-              help: () =>
-                  {return `List of available commands:\n\n${(!appendedCommands
-                      ? []
-                      : Object.keys(appendedCommands)
-                  )
-                      .concat('help')
-                      .sort()
-                      .join(
-                          '\n',
-                      )}\n\n[tab]\t command completion.\n[ctrl+l] clear terminal.\n[ctrl+c] cancel command.`},
+              help: () => {return siteConfig.helpText},
           };
     return {
         //custom

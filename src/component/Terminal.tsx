@@ -46,14 +46,14 @@ const Terminal = ({
         if (banner) {
             setHistory(banner([]), commands, cwd);
         }
-    }, [commands, setHistory, cwd]);
+    }, []);
 
     React.useEffect(() => {
         const { current } = inputRef;
         if (current) {
             current.focus();
         }
-    }, [history, inputRef]);
+    }, [history]);
 
     return (
 	<div className="react-unix-terminal-terminal">

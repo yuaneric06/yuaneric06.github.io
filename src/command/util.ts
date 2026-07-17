@@ -99,9 +99,11 @@ const shell = async ({
         clearHistory();
     }
 
+    console.log("command: ", command, " arg: ", arg, " rest: ", rest);
     if (command === 'clear') {
         clearHistory();
     } else if (command === '') {
+        console.log("set empty command");
         setHistory('', commands, cwd ?? []);
     } else if (
         !isCommandExists({

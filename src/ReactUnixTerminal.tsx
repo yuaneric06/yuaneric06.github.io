@@ -64,8 +64,8 @@ const ReactUnixTerminal = ({
                 if (target.type !== 'directory')
                     return `ls: not a directory: ${args[0]}`;
                 
-                console.log("currently at ", cwd, " and target is ", target);
-                console.log("target children are ", target.children);
+                // console.log("currently at ", cwd, " and target is ", target);
+                // console.log("target children are ", target.children);
 
                 const entries = Object.entries(target.children)
                     .sort(([a], [b]) => {return a.localeCompare(b)})
@@ -95,7 +95,7 @@ const ReactUnixTerminal = ({
                 return target.content;
             },
         }},
-        [fs, cwd, setCwd],
+        [fs, cwd],
     );
 
     React.useEffect(() => {

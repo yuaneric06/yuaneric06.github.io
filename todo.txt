@@ -1,2 +1,15 @@
-fix visual bug where pressing arrow keys doesn't move the caret
-fix visual bug where pressing space then a valid command looks invalid
+banner
+cat
+cd
+clear
+clearhist
+date
+help
+history
+ls
+pwd
+whoami
+
+[tab]	 command completion.
+[ctrl+l] clear terminal.
+[ctrl+c] cancel command.
