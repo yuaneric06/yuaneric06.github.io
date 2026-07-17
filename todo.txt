@@ -1,15 +1,11 @@
-banner
-cat
-cd
-clear
-clearhist
-date
-help
-history
-ls
-pwd
-whoami
+allow spaces in filenames / directories
+tab shows you options when multiple things completes
+vim btw??
 
-[tab]	 command completion.
-[ctrl+l] clear terminal.
-[ctrl+c] cancel command.
+util commands like grep, sed, awk
+piping feature
+
+add easter eggs:
+sudo
+ipconfig
+more commands

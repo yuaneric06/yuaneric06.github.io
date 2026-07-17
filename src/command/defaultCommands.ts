@@ -35,7 +35,9 @@ const createCommands = (
               whoami: () => {return 'visitor'},
               clear: () => {return ''},
               date: () => {return new Date().toString()},
-
+              sudo: () => {return 'you thought buddy...'},
+              ifconfig: () => {return 'wrong terminal'},
+              vim: () => {return 'ur a nerd'},
 
 
               ...commands,
