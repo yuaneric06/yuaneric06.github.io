@@ -1,6 +1,10 @@
 {
+  "src/asset/favicon.ico": {
+    "file": "assets/favicon.69bb89e6.ico",
+    "src": "src/asset/favicon.ico"
+  },
   "index.html": {
-    "file": "assets/index.100dce86.js",
+    "file": "assets/index.b6838893.js",
     "src": "index.html",
     "isEntry": true,
     "css": [
